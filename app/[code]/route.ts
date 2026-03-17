@@ -1,5 +1,6 @@
 import { prisma } from "@/lib/prisma"
 import { redirect } from "next/navigation"
+import { incrementClickCount } from "@/utils/clickCount"
 
 export async function GET(
   req: Request,
@@ -17,5 +18,7 @@ export async function GET(
     return new Response("URL not found", { status: 404 })
   }
 
+  //increment click count
+  incrementClickCount(code).catch(console.error)
   redirect(url.originalUrl)
 }
