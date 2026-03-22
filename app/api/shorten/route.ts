@@ -31,7 +31,8 @@ export async function POST(req: NextRequest) {
    });
    if (exsisting) {
     return NextResponse.json({
-      shortCode : `http://localhost:3000/${exsisting.shortUrl}`
+      success : true,
+      shortUrl : `http://localhost:3000/${exsisting.shortUrl}`
     })
    }
 
@@ -54,12 +55,14 @@ export async function POST(req: NextRequest) {
 
     // return final short link
     return NextResponse.json({
+      success: true,
       shortUrl: `http://localhost:3000/${shortCode}`
-    });
+    },{status: 200});
 
   } catch (error) {
     return NextResponse.json(
-      { error: "Something went wrong" },
+      { success: false,
+        error: "Something went wrong" },
       { status: 500 }
     );
   }

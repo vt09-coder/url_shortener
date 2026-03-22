@@ -1,5 +1,6 @@
 const BASE62 = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
 
+// converts the url into a base62 number
 export function encodeBase62(num: number): string {
   if (num === 0) return BASE62[0];
 
@@ -14,6 +15,7 @@ export function encodeBase62(num: number): string {
   return result;
 }
 
+// converts a base62 number to an url
 export function decodeBase62(str: string): number {
   let num = 0;
 
